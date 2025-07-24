@@ -28,6 +28,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -54,5 +57,8 @@ dependencies {
     implementation(libs.androidx.camera.core)
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
+
+    // QR Code Scanner
+    implementation(libs.com.github.yuriy.budiyev)
 
 }

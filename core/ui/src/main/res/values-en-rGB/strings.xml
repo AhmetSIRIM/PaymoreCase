@@ -5,4 +5,12 @@
     <string name="pay_with_qr_code">Pay with QR Code</string>
     <string name="navigate_to_sales">Navigate to Sales</string>
     <string name="camera_permission_required">Please grant camera permission in settings</string>
+    <string name="qr_payment">Qr Payment</string>
+
+    <string name="something_went_wrong">Something went wrong</string>
+
+    <string name="qr_payment_successfully_completed">QR payment completed</string>
+    <string name="payment_info">Payment Info: %1$s</string>
+    <string name="return_to_main_screen">Return to Main Screen</string>
+    <string name="remaining_time_for_qr_payment">Remaining time: %1$d</string>
 </resources>

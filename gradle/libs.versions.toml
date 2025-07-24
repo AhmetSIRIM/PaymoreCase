@@ -42,6 +42,9 @@ cameraMlkitVision = "1.4.2"
 camerax = "1.4.2"
 mlkit-barcode-scanning = "17.3.0"
 
+# QR Code Scanner
+qrCodeScannerVersion = "2.3.2"
+
 [libraries]
 # AndroidX Core
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -78,6 +81,9 @@ camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", versi
 camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
 androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
 mlkit-barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning", version.ref = "mlkit-barcode-scanning" }
+
+# QR Code Scanner
+com-github-yuriy-budiyev = { group = "com.github.yuriy-budiyev", name = "code-scanner", version.ref = "qrCodeScannerVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

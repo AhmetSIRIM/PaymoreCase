@@ -5,4 +5,12 @@
     <string name="pay_with_qr_code">QR kodu ile öde</string>
     <string name="navigate_to_sales">Satışlara git</string>
     <string name="camera_permission_required">Lütfen ayarlardan kamera iznini verin</string>
+    <string name="qr_payment">Karekod ile ödeme</string>
+
+    <string name="something_went_wrong">Bir şeyler ters gitti</string>
+
+    <string name="qr_payment_successfully_completed">QR ile ödeme başarılı</string>
+    <string name="payment_info">Ödeme Bilgisi: %1$s</string>
+    <string name="return_to_main_screen">Ana sayfaya dön</string>
+    <string name="remaining_time_for_qr_payment">Kalan süre: %1$d</string>
 </resources>
