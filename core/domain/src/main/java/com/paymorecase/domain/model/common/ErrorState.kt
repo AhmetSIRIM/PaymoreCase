@@ -1,4 +1,4 @@
-package com.paymorecase.domain.model
+package com.paymorecase.domain.model.common
 
 /**
  * Data model representing an error state in the UI.

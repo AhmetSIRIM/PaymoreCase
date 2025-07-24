@@ -36,6 +36,7 @@ dependencies {
 
     // Core Project Modules
     implementation(projects.core.ui)
+    implementation(projects.core.domain)
 
     // Feature Project Modules
     implementation(projects.feature.main)
