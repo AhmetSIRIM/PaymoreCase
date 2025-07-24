@@ -4,4 +4,5 @@
     <string name="pay_with_loyalty_card_with_nfc">Sadakat Kartı (NFC ile) öde</string>
     <string name="pay_with_qr_code">QR kodu ile öde</string>
     <string name="navigate_to_sales">Satışlara git</string>
+    <string name="camera_permission_required">Lütfen ayarlardan kamera iznini verin</string>
 </resources>

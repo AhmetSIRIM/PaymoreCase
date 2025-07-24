@@ -52,6 +52,8 @@ dependencies {
     implementation(projects.core.navigation)
 
     // Feature Project Modules
+    implementation(projects.feature.main)
+    implementation(projects.feature.qrpayment)
 
     // AndroidX Core
     implementation(libs.androidx.core.ktx)

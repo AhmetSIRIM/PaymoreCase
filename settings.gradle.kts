@@ -34,3 +34,4 @@ include(":core:navigation")
 
 // Feature Project Modules
 include(":feature:main")
+include(":feature:qrpayment")

@@ -74,5 +74,6 @@ fun PaymoreCaseNavHost(
         startDestination = MainRoute
     ) {
         setupMainUsageFlow(navController)
+        setupQrPaymentUsageFlow(navController)
     }
 }

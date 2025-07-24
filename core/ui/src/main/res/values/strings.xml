@@ -4,4 +4,5 @@
     <string name="pay_with_loyalty_card_with_nfc">Pay with loyalty card (with NFC)</string>
     <string name="pay_with_qr_code">Pay with QR Code</string>
     <string name="navigate_to_sales">Navigate to Sales</string>
+    <string name="camera_permission_required">Please grant camera permission in settings</string>
 </resources>
