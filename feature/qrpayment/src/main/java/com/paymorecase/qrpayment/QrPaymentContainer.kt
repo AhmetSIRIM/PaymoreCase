@@ -1,12 +1,18 @@
 package com.paymorecase.qrpayment
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun QrPaymentContainer(
     onBackPress: () -> Unit,
 ) {
 
-    QrPaymentScreen(onBackPress)
+    val viewModel = hiltViewModel<QrPaymentViewModel>()
+
+    QrPaymentScreen(
+        onBackPress = onBackPress,
+        onPaymentCompleteSuccessfully = viewModel::playBeepSound,
+    )
 
 }
