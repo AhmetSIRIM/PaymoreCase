@@ -20,4 +20,17 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "PaymoreCase"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":app")
+
+// Core Project Modules
+include(":core:common")
+include(":core:data")
+include(":core:ui")
+include(":core:domain")
+include(":core:navigation")
+
+// Feature Project Modules
+include(":feature:main")
