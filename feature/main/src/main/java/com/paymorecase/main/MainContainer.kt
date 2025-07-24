@@ -1,18 +1,19 @@
 package com.paymorecase.main
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.paymorecase.domain.model.common.NFCPaymentCardTypeEnum
 
 @Composable
-fun MainContainer() {
-
-    val viewModel: MainViewModel = hiltViewModel()
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+fun MainContainer(
+    onNavigateToNFC: (NFCPaymentCardTypeEnum) -> Unit,
+    onNavigateToQR: () -> Unit,
+    onNavigateToSales: () -> Unit,
+) {
 
     MainScreen(
-        uiState = uiState,
+        onNavigateToNFC = onNavigateToNFC,
+        onNavigateToQR = onNavigateToQR,
+        onNavigateToSales = onNavigateToSales,
     )
 
 }

@@ -30,8 +30,8 @@ android {
 dependencies {
 
     // Core Project Modules
-    api(projects.core.common)
-    api(projects.core.domain)
+    implementation(projects.core.common)
+    implementation(projects.core.domain)
 
     // AndroidX Core
     implementation(libs.androidx.core.ktx)

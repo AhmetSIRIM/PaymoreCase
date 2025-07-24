@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="main_screen">Ana Ekran</string>
+    <string name="pay_with_credit_card_with_nfc">Kredi Kartı (NFC ile) öde</string>
+    <string name="pay_with_loyalty_card_with_nfc">Sadakat Kartı (NFC ile) öde</string>
+    <string name="pay_with_qr_code">QR kodu ile öde</string>
+    <string name="navigate_to_sales">Satışlara git</string>
 </resources>

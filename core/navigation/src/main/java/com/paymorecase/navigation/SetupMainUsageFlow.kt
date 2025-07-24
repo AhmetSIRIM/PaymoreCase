@@ -1,5 +1,6 @@
 package com.paymorecase.navigation
 
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -10,6 +11,10 @@ internal fun NavGraphBuilder.setupMainUsageFlow(
     navController: NavController,
 ) {
     composable<MainRoute> {
-        MainContainer()
+        MainContainer(
+            onNavigateToQR = { Log.i("InfoTag", "onNavigateToQR triggered")  },
+            onNavigateToNFC = { Log.i("InfoTag", "onNavigateToNFC triggered. NFC Type: $it")  },
+            onNavigateToSales = { Log.i("InfoTag", "onNavigateToSales triggered")  },
+        )
     }
 }
