@@ -54,6 +54,7 @@ dependencies {
     // Feature Project Modules
     implementation(projects.feature.main)
     implementation(projects.feature.qrpayment)
+    implementation(projects.feature.nfcpayment)
 
     // AndroidX Core
     implementation(libs.androidx.core.ktx)

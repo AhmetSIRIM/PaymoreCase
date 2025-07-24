@@ -75,5 +75,6 @@ fun PaymoreCaseNavHost(
     ) {
         setupMainUsageFlow(navController)
         setupQrPaymentUsageFlow(navController)
+        setupNfcPaymentUsageFlow(navController)
     }
 }
