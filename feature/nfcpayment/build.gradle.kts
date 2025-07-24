@@ -36,6 +36,7 @@ android {
 dependencies {
 
     // Core Project Modules
+    implementation(projects.core.common)
     implementation(projects.core.domain)
     implementation(projects.core.ui)
 
@@ -60,5 +61,7 @@ dependencies {
 
     // QR Code Scanner
     implementation(libs.com.github.yuriy.budiyev)
+
+    implementation(libs.nfc.helper)
 
 }

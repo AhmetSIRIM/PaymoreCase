@@ -45,6 +45,9 @@ mlkit-barcode-scanning = "17.3.0"
 # QR Code Scanner
 qrCodeScannerVersion = "2.3.2"
 
+# NFC Helper
+nfc-helper = "3.0.1"
+
 [libraries]
 # AndroidX Core
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -84,6 +87,9 @@ mlkit-barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning"
 
 # QR Code Scanner
 com-github-yuriy-budiyev = { group = "com.github.yuriy-budiyev", name = "code-scanner", version.ref = "qrCodeScannerVersion" }
+
+# NFC Helper
+nfc-helper = { module = "com.github.devnied.emvnfccard:library", version.ref = "nfc-helper" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

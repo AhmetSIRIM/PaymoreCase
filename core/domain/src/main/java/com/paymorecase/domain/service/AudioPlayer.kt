@@ -1,5 +1,6 @@
 package com.paymorecase.domain.service
 
-fun interface AudioPlayer {
+interface AudioPlayer {
     fun playBeep()
+    fun announceText(text: String)
 }

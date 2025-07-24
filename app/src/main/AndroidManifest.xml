@@ -6,6 +6,9 @@
         android:required="true" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".PaymoreCaseApplication"
         android:allowBackup="true"

@@ -5,12 +5,30 @@
     <string name="pay_with_qr_code">Pay with QR Code</string>
     <string name="navigate_to_sales">Navigate to Sales</string>
     <string name="camera_permission_required">Please grant camera permission in settings</string>
-    <string name="qr_payment">Qr Payment</string>
+    <string name="qr_payment">QR Payment</string>
 
     <string name="something_went_wrong">Something went wrong</string>
 
     <string name="qr_payment_successfully_completed">QR payment completed</string>
+    <string name="nfc_payment_successfully_completed">NFC payment completed</string>
     <string name="payment_info">Payment Info: %1$s</string>
     <string name="return_to_main_screen">Return to Main Screen</string>
     <string name="remaining_time_for_qr_payment">Remaining time: %1$d</string>
+
+    <string name="nfc_credit_card_payment">Payment with Credit Card</string>
+    <string name="nfc_loyalty_card_payment">Payment with Loyalty Card</string>
+    <string name="nfc_payment">NFC Payment</string>
+    <string name="hold_credit_card_near_device">Hold your credit card near the device</string>
+    <string name="hold_loyalty_card_near_device">Hold your loyalty card near the device</string>
+    <string name="hold_card_near_device">Hold your card near the device</string>
+    <string name="processing_card">Processing card…</string>
+
+    <!-- Card info strings -->
+    <string name="card_number_info">Card Number: %1$s</string>
+    <string name="expire_date_info">Expiration Date: %1$s</string>
+    <string name="card_id_info">Card ID: %1$s</string>
+
+    <!-- Error handling -->
+    <string name="nfc_payment_error">NFC Payment Error</string>
+    <string name="try_again">Try Again</string>
 </resources>

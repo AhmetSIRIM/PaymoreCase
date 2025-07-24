@@ -36,7 +36,7 @@ fun PaymentTopBar(
             Text(
                 text = title,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.headlineMedium
+                style = MaterialTheme.typography.headlineSmall
             )
         },
         modifier = modifier,

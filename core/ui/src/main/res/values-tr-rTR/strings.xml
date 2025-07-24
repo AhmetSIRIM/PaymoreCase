@@ -10,7 +10,25 @@
     <string name="something_went_wrong">Bir şeyler ters gitti</string>
 
     <string name="qr_payment_successfully_completed">QR ile ödeme başarılı</string>
+    <string name="nfc_payment_successfully_completed">NFC ile ödeme başarılı</string>
     <string name="payment_info">Ödeme Bilgisi: %1$s</string>
     <string name="return_to_main_screen">Ana sayfaya dön</string>
     <string name="remaining_time_for_qr_payment">Kalan süre: %1$d</string>
+
+    <string name="nfc_credit_card_payment">Kredi Kartı ile Ödeme</string>
+    <string name="nfc_loyalty_card_payment">Sadakat Kartı ile Ödeme</string>
+    <string name="nfc_payment">NFC ile Ödeme</string>
+    <string name="hold_credit_card_near_device">Kredi kartınızı cihaza yaklaştırın</string>
+    <string name="hold_loyalty_card_near_device">Sadakat kartınızı cihaza yaklaştırın</string>
+    <string name="hold_card_near_device">Kartınızı cihaza yaklaştırın</string>
+    <string name="processing_card">Kart işleniyor…</string>
+
+    <!-- Card info strings -->
+    <string name="card_number_info">Kart Numarası: %1$s</string>
+    <string name="expire_date_info">Son Kullanma Tarihi: %1$s</string>
+    <string name="card_id_info">Kart ID: %1$s</string>
+
+    <!-- Error handling -->
+    <string name="nfc_payment_error">NFC Ödeme Hatası</string>
+    <string name="try_again">Tekrar Dene</string>
 </resources>

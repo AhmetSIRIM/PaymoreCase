@@ -70,4 +70,6 @@ dependencies {
     implementation(libs.navigation.common)
     implementation(libs.navigation.compose)
 
+    implementation(libs.nfc.helper)
+
 }
