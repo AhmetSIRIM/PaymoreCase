@@ -37,9 +37,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.ui)
 
-    // Compose Dependencies - Some compose dependencies can be accessed through the `:core:ui` module
-    implementation(libs.androidx.ui.tooling)
-    implementation(libs.androidx.ui.tooling.preview)
+    // Compose dependencies can be accessed through the `:core:ui` module
 
     // Hilt
     implementation(libs.hilt.android)

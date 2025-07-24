@@ -17,6 +17,7 @@ lifecycleRuntimeKtx = "2.9.2"
 
 # Compose Dependencies
 composeBom = "2025.07.00"
+activityCompose = "1.10.1"
 
 # Kotlinx Serialization
 kotlinxSerializationJson = "1.9.0"
@@ -35,6 +36,15 @@ javaxInject = "1"
 # Navigation Component
 navigationComponent = "2.9.2"
 
+# CameraX & ML Kit
+cameraCore = "1.4.2"
+cameraMlkitVision = "1.4.2"
+camerax = "1.4.2"
+mlkit-barcode-scanning = "17.3.0"
+
+# QR Code Scanner
+qrCodeScannerVersion = "2.3.2"
+
 [libraries]
 # AndroidX Core
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +57,7 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 
 # Kotlinx Coroutines
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
@@ -63,6 +74,16 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInjec
 # Navigation Component
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationComponent" }
 navigation-common = { group = "androidx.navigation", name = "navigation-common", version.ref = "navigationComponent" }
+
+# CameraX & ML Kit
+camera-mlkit-vision = { group = "androidx.camera", name = "camera-mlkit-vision", version.ref = "cameraMlkitVision" }
+camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
+camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
+androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
+mlkit-barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning", version.ref = "mlkit-barcode-scanning" }
+
+# QR Code Scanner
+com-github-yuriy-budiyev = { group = "com.github.yuriy-budiyev", name = "code-scanner", version.ref = "qrCodeScannerVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

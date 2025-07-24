@@ -1,12 +1,12 @@
 package com.paymorecase.main
 
 import androidx.compose.runtime.Composable
-import com.paymorecase.domain.model.common.NFCPaymentCardTypeEnum
+import com.paymorecase.domain.model.common.PaymentTypeEnum
 
 @Composable
 fun MainContainer(
-    onNavigateToNFC: (NFCPaymentCardTypeEnum) -> Unit,
-    onNavigateToQR: () -> Unit,
+    onNavigateToNFC: (PaymentTypeEnum) -> Unit,
+    onNavigateToQR: (PaymentTypeEnum) -> Unit,
     onNavigateToSales: () -> Unit,
 ) {
 

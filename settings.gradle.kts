@@ -16,6 +16,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
@@ -34,3 +35,4 @@ include(":core:navigation")
 
 // Feature Project Modules
 include(":feature:main")
+include(":feature:qrpayment")
