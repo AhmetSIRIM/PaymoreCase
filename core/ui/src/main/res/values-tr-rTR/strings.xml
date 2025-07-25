@@ -6,15 +6,12 @@
     <string name="navigate_to_sales">Satışlara git</string>
     <string name="camera_permission_required">Lütfen ayarlardan kamera iznini verin</string>
     <string name="qr_payment">Karekod ile ödeme</string>
-
     <string name="something_went_wrong">Bir şeyler ters gitti</string>
-
     <string name="qr_payment_successfully_completed">QR ile ödeme başarılı</string>
     <string name="nfc_payment_successfully_completed">NFC ile ödeme başarılı</string>
     <string name="payment_info">Ödeme Bilgisi: %1$s</string>
     <string name="return_to_main_screen">Ana sayfaya dön</string>
     <string name="remaining_time_for_qr_payment">Kalan süre: %1$d</string>
-
     <string name="nfc_credit_card_payment">Kredi Kartı ile Ödeme</string>
     <string name="nfc_loyalty_card_payment">Sadakat Kartı ile Ödeme</string>
     <string name="nfc_payment">NFC ile Ödeme</string>
@@ -22,13 +19,19 @@
     <string name="hold_loyalty_card_near_device">Sadakat kartınızı cihaza yaklaştırın</string>
     <string name="hold_card_near_device">Kartınızı cihaza yaklaştırın</string>
     <string name="processing_card">Kart işleniyor…</string>
-
-    <!-- Card info strings -->
     <string name="card_number_info">Kart Numarası: %1$s</string>
     <string name="expire_date_info">Son Kullanma Tarihi: %1$s</string>
     <string name="card_id_info">Kart ID: %1$s</string>
-
-    <!-- Error handling -->
     <string name="nfc_payment_error">NFC Ödeme Hatası</string>
     <string name="try_again">Tekrar Dene</string>
+    <string name="sales_records">Satış Kayıtları</string>
+    <string name="loading">Yükleniyor…</string>
+    <string name="no_sales_records">Henüz satış kaydı bulunmuyor</string>
+    <string name="total_sales">Toplam Satış</string>
+    <string name="total_amount">Toplam Tutar</string>
+    <string name="delete">Sil</string>
+    <string name="delete_all_sales_records">Tüm satış kayıtlarını sil</string>
+    <string name="enter_payment_amount">Ödeme tutarını girin</string>
+    <string name="amount">Tutar</string>
+    <string name="confirm_amount">Tutarı Onayla</string>
 </resources>

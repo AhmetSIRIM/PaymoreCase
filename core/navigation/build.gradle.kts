@@ -42,6 +42,7 @@ dependencies {
     implementation(projects.feature.main)
     implementation(projects.feature.qrpayment)
     implementation(projects.feature.nfcpayment)
+    implementation(projects.feature.sales)
 
     // Navigation Component
     implementation(libs.navigation.common)
