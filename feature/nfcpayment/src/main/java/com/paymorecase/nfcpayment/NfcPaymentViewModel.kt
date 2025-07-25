@@ -54,9 +54,32 @@ internal class NfcPaymentViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<NfcPaymentUiState>(NfcPaymentUiState.WaitingForCard)
     val uiState: StateFlow<NfcPaymentUiState> = _uiState.asStateFlow()
 
+    private val _enteredPrice = MutableStateFlow("")
+    val enteredPrice: StateFlow<String> = _enteredPrice.asStateFlow()
+
+    private val _isPriceConfirmed = MutableStateFlow(false)
+    val isPriceConfirmed: StateFlow<Boolean> = _isPriceConfirmed.asStateFlow()
+
     fun playBeepSound() = audioPlayer.playBeep()
 
+    fun updatePrice(price: String) {
+        _enteredPrice.update { price }
+    }
+
+    fun confirmPrice() {
+        val price = _enteredPrice.value.toDoubleOrNull()
+        if (price != null && price > 0) {
+            _isPriceConfirmed.update { true }
+        }
+    }
+
     fun processNfcTag(tag: Tag) {
+        // Only process if price is confirmed
+        if (!_isPriceConfirmed.value) {
+            audioPlayer.announceText("Önce tutarı onaylayın")
+            return
+        }
+
         viewModelScope.launch {
             _uiState.update { NfcPaymentUiState.Processing }
 
@@ -116,7 +139,7 @@ internal class NfcPaymentViewModel @Inject constructor(
                     e.printStackTrace()
                 }
 
-                // Save sales record to database
+                // Save sales record to database with user-entered price
                 saveSalesRecord(cardInfo)
 
                 _uiState.update { NfcPaymentUiState.Success(cardInfo) }
@@ -141,9 +164,11 @@ internal class NfcPaymentViewModel @Inject constructor(
                 else -> "NFC Ödeme"
             }
 
+            val price = _enteredPrice.value.toDoubleOrNull() ?: 0.0
+
             val salesRecord = SalesRecord.createNfcSalesRecord(
                 paymentType = cardInfo.paymentType,
-                price = generateRandomPrice(), // In real app, this would come from product selection
+                price = price, // Use user-entered price
                 productId = generateProductId(),
                 productName = productName,
                 cardUid = cardInfo.tagId,
@@ -152,17 +177,12 @@ internal class NfcPaymentViewModel @Inject constructor(
             )
 
             val recordId = salesRepository.insertSalesRecord(salesRecord)
-            Log.d("InfoTag", "Sales record saved with ID: $recordId")
+            Log.d("InfoTag", "Sales record saved with ID: $recordId, Price: ₺$price")
 
         } catch (e: Exception) {
             Log.e("InfoTag", "Error saving sales record: ${e.message}", e)
             // Don't fail the payment flow if saving fails
         }
-    }
-
-    private fun generateRandomPrice(): Double {
-        // Generate random price between 10.0 and 500.0 for demo purposes
-        return (10..500).random().toDouble() + (0..99).random().toDouble() / 100
     }
 
     private fun generateProductId(): String {
@@ -176,8 +196,9 @@ internal class NfcPaymentViewModel @Inject constructor(
 
     fun resetState() {
         _uiState.update { NfcPaymentUiState.WaitingForCard }
+        _enteredPrice.value = ""
+        _isPriceConfirmed.value = false
     }
-
 }
 
 class PcscProvider : IProvider {

@@ -14,7 +14,6 @@
     <string name="payment_info">Payment Info: %1$s</string>
     <string name="return_to_main_screen">Return to Main Screen</string>
     <string name="remaining_time_for_qr_payment">Remaining time: %1$d</string>
-
     <string name="nfc_credit_card_payment">Payment with Credit Card</string>
     <string name="nfc_loyalty_card_payment">Payment with Loyalty Card</string>
     <string name="nfc_payment">NFC Payment</string>
@@ -22,16 +21,11 @@
     <string name="hold_loyalty_card_near_device">Hold your loyalty card near the device</string>
     <string name="hold_card_near_device">Hold your card near the device</string>
     <string name="processing_card">Processing card…</string>
-
-    <!-- Card info strings -->
     <string name="card_number_info">Card Number: %1$s</string>
     <string name="expire_date_info">Expiration Date: %1$s</string>
     <string name="card_id_info">Card ID: %1$s</string>
-
-    <!-- Error handling -->
     <string name="nfc_payment_error">NFC Payment Error</string>
     <string name="try_again">Try Again</string>
-
     <string name="sales_records">Sales Records</string>
     <string name="loading">Loading…</string>
     <string name="no_sales_records">No sales records</string>
@@ -39,4 +33,7 @@
     <string name="total_amount">Total Amount</string>
     <string name="delete">Delete</string>
     <string name="delete_all_sales_records">Delete all sales records</string>
+    <string name="enter_payment_amount">Enter payment amount</string>
+    <string name="amount">Amount</string>
+    <string name="confirm_amount">Confirm amount</string>
 </resources>

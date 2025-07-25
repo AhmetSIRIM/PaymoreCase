@@ -19,10 +19,13 @@ fun NfcPaymentContainer(
 
     val viewModel = hiltViewModel<NfcPaymentViewModel>()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val enteredPrice by viewModel.enteredPrice.collectAsStateWithLifecycle()
+    val isPriceConfirmed by viewModel.isPriceConfirmed.collectAsStateWithLifecycle()
 
     val paymentType = viewModel.paymentType
 
-    DisposableEffect(context) {
+    // Only enable NFC when price is confirmed
+    DisposableEffect(context, isPriceConfirmed) {
         val nfcAdapter = NfcAdapter.getDefaultAdapter(context)
 
         val nfcReaderCallback = NfcAdapter.ReaderCallback { tag: Tag ->
@@ -32,7 +35,7 @@ fun NfcPaymentContainer(
             }
         }
 
-        if (nfcAdapter != null) {
+        if (nfcAdapter != null && isPriceConfirmed) {
             val options = Bundle().apply {
                 putInt(NfcAdapter.EXTRA_READER_PRESENCE_CHECK_DELAY, 250)
             }
@@ -58,6 +61,9 @@ fun NfcPaymentContainer(
     NfcPaymentScreen(
         uiState = uiState,
         paymentType = paymentType,
+        enteredPrice = enteredPrice,
+        onPriceChanged = viewModel::updatePrice,
+        onPriceConfirmed = viewModel::confirmPrice,
         onBackPress = onBackPress,
         onPaymentCompleteSuccessfully = viewModel::playBeepSound,
         onResetState = viewModel::resetState
