@@ -34,14 +34,13 @@ class AndroidAudioPlayer @Inject constructor(
         applicationScope.launch {
             textToSpeech = TextToSpeech(applicationContext) { status ->
                 if (status == TextToSpeech.SUCCESS) {
-                    val result = textToSpeech?.setLanguage(Locale("tr", "TR"))
+                    val result = textToSpeech?.setLanguage(Locale.getDefault())
                     if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                         // Fallback to English if Turkish is not supported
-                        textToSpeech?.setLanguage(Locale.ENGLISH)
+                        textToSpeech?.language = Locale.ENGLISH
                         Log.w("AudioPlayer", "Turkish language not supported, using English")
                     }
 
-                    // Configure TTS settings
                     textToSpeech?.setSpeechRate(1.0f)
                     textToSpeech?.setPitch(1.0f)
 
@@ -107,7 +106,7 @@ class AndroidAudioPlayer @Inject constructor(
         }
     }
 
-    fun shutdown() {
+    override fun shutdown() {
         try {
             textToSpeech?.stop()
             textToSpeech?.shutdown()

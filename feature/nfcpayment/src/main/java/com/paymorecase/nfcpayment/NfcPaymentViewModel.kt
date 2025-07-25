@@ -13,6 +13,7 @@ import com.github.devnied.emvnfccard.parser.IProvider
 import com.paymorecase.domain.model.common.PaymentTypeEnum
 import com.paymorecase.domain.service.AudioPlayer
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -56,10 +57,11 @@ internal class NfcPaymentViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.update { NfcPaymentUiState.Processing }
 
+            delay(2000) // Simulate loading
+
             try {
                 val isoDep = IsoDep.get(tag)
                 if (isoDep != null) {
-                    // Announce card detection
                     when (paymentType) {
                         PaymentTypeEnum.CREDIT_CARD -> audioPlayer.announceText("Kart kabul edildi")
                         PaymentTypeEnum.LOYALTY_CARD -> audioPlayer.announceText("Sadakat kartı kabul edildi")
@@ -101,13 +103,9 @@ internal class NfcPaymentViewModel @Inject constructor(
                     historicalBytes = historicalBytesStr,
                     expireDate = expireDate,
                     paymentType = paymentType
-                )
-
-                Log.d("InfoTag", "card.cardNumber: ${card.cardNumber}")
-                Log.d("InfoTag", "card.iban: ${card.iban}")
-                Log.d("InfoTag", "tag.tag.id: $tagId")
-                Log.d("InfoTag", "IsoDep.get(tag).historicalBytes: $historicalBytesStr")
-                Log.d("InfoTag", expireDate.toString())
+                ).also {
+                    Log.d("InfoTag", it.toString())
+                }
 
                 try {
                     isoDep.close()
@@ -132,6 +130,12 @@ internal class NfcPaymentViewModel @Inject constructor(
     fun resetState() {
         _uiState.update { NfcPaymentUiState.WaitingForCard }
     }
+
+    override fun onCleared() {
+        audioPlayer.shutdown()
+        super.onCleared()
+    }
+
 }
 
 class PcscProvider : IProvider {

@@ -47,7 +47,6 @@ internal fun NfcPaymentScreen(
         else -> stringResource(uiRes.string.nfc_payment)
     }
 
-    // Handle success state with dialog
     if (uiState is NfcPaymentUiState.Success) {
         onPaymentCompleteSuccessfully()
 
@@ -78,7 +77,6 @@ internal fun NfcPaymentScreen(
         )
     }
 
-    // Handle error state with dialog
     if (uiState is NfcPaymentUiState.Error) {
         Toast.makeText(context, uiRes.string.something_went_wrong, Toast.LENGTH_SHORT).show()
     }
@@ -108,7 +106,6 @@ internal fun NfcPaymentScreen(
                     is NfcPaymentUiState.Error,
                         -> {
                         // These states are handled by dialogs above
-                        // Show empty content or keep the last valid state
                         WaitingForCardContent(paymentType = paymentType)
                     }
                 }

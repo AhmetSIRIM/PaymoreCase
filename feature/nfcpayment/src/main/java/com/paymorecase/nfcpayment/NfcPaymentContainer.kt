@@ -22,12 +22,10 @@ fun NfcPaymentContainer(
 
     val paymentType = viewModel.paymentType
 
-    // Setup NFC reader mode
     DisposableEffect(context) {
         val nfcAdapter = NfcAdapter.getDefaultAdapter(context)
 
         val nfcReaderCallback = NfcAdapter.ReaderCallback { tag: Tag ->
-            // Check if tag supports IsoDep (EMV cards)
             val isoDep = IsoDep.get(tag)
             if (isoDep != null) {
                 viewModel.processNfcTag(tag)
