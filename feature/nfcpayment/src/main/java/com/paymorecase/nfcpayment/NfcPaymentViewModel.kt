@@ -10,7 +10,9 @@ import androidx.navigation.toRoute
 import com.github.devnied.emvnfccard.exception.CommunicationException
 import com.github.devnied.emvnfccard.parser.EmvTemplate
 import com.github.devnied.emvnfccard.parser.IProvider
+import com.paymorecase.domain.model.SalesRecord
 import com.paymorecase.domain.model.common.PaymentTypeEnum
+import com.paymorecase.domain.repository.SalesRepository
 import com.paymorecase.domain.service.AudioPlayer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -43,6 +45,7 @@ sealed class NfcPaymentUiState {
 @HiltViewModel
 internal class NfcPaymentViewModel @Inject constructor(
     private val audioPlayer: AudioPlayer,
+    private val salesRepository: SalesRepository,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
@@ -113,6 +116,9 @@ internal class NfcPaymentViewModel @Inject constructor(
                     e.printStackTrace()
                 }
 
+                // Save sales record to database
+                saveSalesRecord(cardInfo)
+
                 _uiState.update { NfcPaymentUiState.Success(cardInfo) }
                 audioPlayer.announceText("Satın alma tamamlandı")
                 playBeepSound()
@@ -127,13 +133,49 @@ internal class NfcPaymentViewModel @Inject constructor(
         }
     }
 
-    fun resetState() {
-        _uiState.update { NfcPaymentUiState.WaitingForCard }
+    private suspend fun saveSalesRecord(cardInfo: NfcCardInfo) {
+        try {
+            val productName = when (cardInfo.paymentType) {
+                PaymentTypeEnum.CREDIT_CARD -> "Kredi Kartı ile Ödeme"
+                PaymentTypeEnum.LOYALTY_CARD -> "Sadakat Kartı ile Ödeme"
+                else -> "NFC Ödeme"
+            }
+
+            val salesRecord = SalesRecord.createNfcSalesRecord(
+                paymentType = cardInfo.paymentType,
+                price = generateRandomPrice(), // In real app, this would come from product selection
+                productId = generateProductId(),
+                productName = productName,
+                cardUid = cardInfo.tagId,
+                cardNumber = cardInfo.cardNumber,
+                cardExpireDate = cardInfo.expireDate.toString()
+            )
+
+            val recordId = salesRepository.insertSalesRecord(salesRecord)
+            Log.d("InfoTag", "Sales record saved with ID: $recordId")
+
+        } catch (e: Exception) {
+            Log.e("InfoTag", "Error saving sales record: ${e.message}", e)
+            // Don't fail the payment flow if saving fails
+        }
     }
 
-    override fun onCleared() {
-        audioPlayer.shutdown()
-        super.onCleared()
+    private fun generateRandomPrice(): Double {
+        // Generate random price between 10.0 and 500.0 for demo purposes
+        return (10..500).random().toDouble() + (0..99).random().toDouble() / 100
+    }
+
+    private fun generateProductId(): String {
+        // Generate random product ID for demo purposes
+        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return (1..6)
+            .map { chars.random() }
+            .joinToString("")
+            .let { "PRD$it" }
+    }
+
+    fun resetState() {
+        _uiState.update { NfcPaymentUiState.WaitingForCard }
     }
 
 }

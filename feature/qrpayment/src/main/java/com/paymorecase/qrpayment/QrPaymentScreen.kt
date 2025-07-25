@@ -41,7 +41,7 @@ import com.paymorecase.ui.R as uiRes
 @Composable
 internal fun QrPaymentScreen(
     onBackPress: () -> Unit,
-    onPaymentCompleteSuccessfully: () -> Unit,
+    onQrCodeScanned: (String) -> Unit,
 ) {
     val codeScanner = remember { mutableStateOf<CodeScanner?>(null) }
 
@@ -49,7 +49,10 @@ internal fun QrPaymentScreen(
     var remainingTime: Int by rememberSaveable { mutableIntStateOf(30) }
 
     scannedText?.let { scannedText: String ->
-        onPaymentCompleteSuccessfully.invoke()
+        // Call the ViewModel function when QR is scanned
+        LaunchedEffect(scannedText) {
+            onQrCodeScanned(scannedText)
+        }
 
         InformationalDialog(
             icon = uiRes.drawable.success_operation,
@@ -141,7 +144,7 @@ private fun QrPaymentScreenPreview() {
         ) {
             QrPaymentScreen(
                 onBackPress = {},
-                onPaymentCompleteSuccessfully = {},
+                onQrCodeScanned = {},
             )
         }
     }

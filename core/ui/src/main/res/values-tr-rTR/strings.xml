@@ -31,4 +31,12 @@
     <!-- Error handling -->
     <string name="nfc_payment_error">NFC Ödeme Hatası</string>
     <string name="try_again">Tekrar Dene</string>
+
+    <string name="sales_records">Satış Kayıtları</string>
+    <string name="loading">Yükleniyor…</string>
+    <string name="no_sales_records">Henüz satış kaydı bulunmuyor</string>
+    <string name="total_sales">Toplam Satış</string>
+    <string name="total_amount">Toplam Tutar</string>
+    <string name="delete">Sil</string>
+    <string name="delete_all_sales_records">Tüm satış kayıtlarını sil</string>
 </resources>

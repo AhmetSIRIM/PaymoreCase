@@ -12,7 +12,7 @@ fun QrPaymentContainer(
 
     QrPaymentScreen(
         onBackPress = onBackPress,
-        onPaymentCompleteSuccessfully = viewModel::playBeepSound,
+        onQrCodeScanned = viewModel::onQrCodeScanned,
     )
 
 }

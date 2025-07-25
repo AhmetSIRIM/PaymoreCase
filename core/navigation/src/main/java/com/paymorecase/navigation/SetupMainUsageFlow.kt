@@ -1,6 +1,5 @@
 package com.paymorecase.navigation
 
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -8,6 +7,7 @@ import com.paymorecase.main.MainContainer
 import com.paymorecase.main.MainRoute
 import com.paymorecase.nfcpayment.NfcPaymentRoute
 import com.paymorecase.qrpayment.QrPaymentRoute
+import com.paymorecase.sales.SalesRoute
 
 internal fun NavGraphBuilder.setupMainUsageFlow(
     navController: NavController,
@@ -16,7 +16,7 @@ internal fun NavGraphBuilder.setupMainUsageFlow(
         MainContainer(
             onNavigateToQR = { navController.navigate(QrPaymentRoute(paymentTypeEnum = it)) },
             onNavigateToNFC = { navController.navigate(NfcPaymentRoute(paymentTypeEnum = it)) },
-            onNavigateToSales = { Log.i("InfoTag", "onNavigateToSales triggered") },
+            onNavigateToSales = { navController.navigate(SalesRoute) },
         )
     }
 }

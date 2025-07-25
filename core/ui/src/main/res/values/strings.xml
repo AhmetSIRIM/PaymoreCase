@@ -31,4 +31,12 @@
     <!-- Error handling -->
     <string name="nfc_payment_error">NFC Payment Error</string>
     <string name="try_again">Try Again</string>
+
+    <string name="sales_records">Sales Records</string>
+    <string name="loading">Loading…</string>
+    <string name="no_sales_records">No sales records</string>
+    <string name="total_sales">Total Sales</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="delete">Delete</string>
+    <string name="delete_all_sales_records">Delete all sales records</string>
 </resources>

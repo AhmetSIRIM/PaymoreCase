@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.androidx.room)
 }
 
 android {
@@ -31,6 +32,11 @@ android {
     }
 }
 
+// Specifies where Room database schema files (in JSON format) will be saved.
+// These files describe the database structure (tables, columns, etc.) and are used for migrations.
+// "$projectDir/schemas" points to the :core:data/schemas directory.
+room { schemaDirectory("$projectDir/schemas") }
+
 dependencies {
 
     // Core Project Modules
@@ -41,5 +47,10 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    // Room Database
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
 }
