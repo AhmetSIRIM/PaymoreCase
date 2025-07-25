@@ -27,7 +27,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,129 +35,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewModelScope
 import com.paymorecase.domain.model.SalesRecord
 import com.paymorecase.domain.model.common.PaymentTypeEnum
-import com.paymorecase.domain.repository.SalesRepository
 import com.paymorecase.ui.component.PaymentTopBar
 import com.paymorecase.ui.theme.PaymoreCaseTheme
 import com.paymorecase.ui.utilty.ResponsivenessCheckerPreview
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import javax.inject.Inject
 import com.paymorecase.ui.R as uiRes
-
-@Serializable
-data object SalesRoute
-
-data class SalesUiState(
-    val salesRecords: List<SalesRecord> = emptyList(),
-    val isLoading: Boolean = false,
-    val errorMessage: String? = null,
-    val totalAmount: Double = 0.0,
-    val totalCount: Int = 0,
-)
-
-@HiltViewModel
-internal class SalesViewModel @Inject constructor(
-    private val salesRepository: SalesRepository,
-) : ViewModel() {
-
-    private val _uiState = MutableStateFlow(SalesUiState(isLoading = true))
-    val uiState: StateFlow<SalesUiState> = _uiState.asStateFlow()
-
-    init {
-        loadSalesRecords()
-    }
-
-    private fun loadSalesRecords() {
-        viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true) }
-
-            delay(200) // Simulate loading
-
-            try {
-                salesRepository.getAllSalesRecords().collect { records ->
-                    val totalAmount = async { salesRepository.getTotalSalesAmount() }
-                    val totalCount = async { salesRepository.getTotalSalesCount() }
-
-                    _uiState.update {
-                        SalesUiState(
-                            salesRecords = records,
-                            isLoading = false,
-                            totalAmount = totalAmount.await(),
-                            totalCount = totalCount.await()
-                        )
-                    }
-                }
-            } catch (_: Exception) {
-                _uiState.update {
-                    it.copy(
-                        isLoading = false,
-                        errorMessage = "Something went wrong"
-                    )
-                }
-            }
-        }
-    }
-
-    fun deleteSalesRecord(salesRecord: SalesRecord) {
-        viewModelScope.launch {
-            try {
-                salesRepository.deleteSalesRecord(salesRecord)
-            } catch (_: Exception) {
-                _uiState.update {
-                    it.copy(
-                        isLoading = false,
-                        errorMessage = "Something went wrong"
-                    )
-                }
-            }
-        }
-    }
-
-    fun deleteAllSalesRecords() {
-        viewModelScope.launch {
-            try {
-                salesRepository.deleteAllSalesRecords()
-            } catch (_: Exception) {
-                _uiState.update {
-                    it.copy(
-                        isLoading = false,
-                        errorMessage = "Something went wrong"
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun SalesContainer(
-    onBackPress: () -> Unit,
-) {
-    val viewModel = hiltViewModel<SalesViewModel>()
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    SalesScreen(
-        uiState = uiState,
-        onBackPress = onBackPress,
-        onDeleteSalesRecord = viewModel::deleteSalesRecord,
-        onDeleteAllRecords = viewModel::deleteAllSalesRecords
-    )
-}
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable

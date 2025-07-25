@@ -44,7 +44,7 @@ internal fun MainScreen(
                 true -> onNavigateToQR(PaymentTypeEnum.QR_CODE)
                 false -> Toast.makeText(
                     context,
-                    R.string.camera_permission_required,
+                    uiRes.string.camera_permission_required,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -84,7 +84,7 @@ internal fun MainScreen(
                     onTheRationaleShowed = {
                         Toast.makeText(
                             context,
-                            R.string.camera_permission_required,
+                            uiRes.string.camera_permission_required,
                             Toast.LENGTH_SHORT
                         ).show()
 
