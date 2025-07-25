@@ -287,7 +287,7 @@ PaymoreCase/
 - [x] **Room Database** - Local data persistence
 - [x] **Dagger-Hilt** - Dependency injection
 - [x] **NFC API Integration** - EMV card reading
-- [x] **QR Code Scanning** - ML Kit implementation
+- [x] **QR Code Scanning** - QR Code Scanner implementation
 - [x] **TextToSpeech + Beep** - Audio feedback
 - [x] **Jetpack Compose** - Modern UI framework
 
@@ -298,7 +298,7 @@ PaymoreCase/
 - [x] **Sales Management** - CRUD operations, statistics
 - [x] **Audio System** - Case-compliant announcements
 - [x]  **TR/EN Localization** - Currently Turkish
-- [ ]  
+
 ### **🔄 Ready for Extension**
 - [ ] **MQTT Integration** - Architecture prepared
 - [ ] **Unit Testing** - Framework ready
@@ -320,7 +320,7 @@ PaymoreCase/
 - **Error handling** with user feedback
 
 ### **📱 QR Implementation**
-- **ML Kit Barcode Scanning** - Google's ML solution
+- **QR Code Scanner** - Yuriy Budiyev solution
 - **Camera lifecycle management** - Proper resource handling
 - **JSON parsing** - Flexible data format support
 - **Timeout handling** - 30-second auto-close
