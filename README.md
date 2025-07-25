@@ -337,10 +337,6 @@ PaymoreCase/
 
 <div align="center">
 
-**🎬 [Watch Demo Video](https://drive.google.com/file/d/1lEG7acRnIb4sI8Hs6Wfo6ssDOmO_hFvT/view?usp=sharing)**
-
-*TPOS Android Native Developer - Technical Assessment*
-
-**⭐ [GitHub Repository](https://github.com/AhmetSIRIM/PaymoreCase) ⭐**
+**[Watch Demo Video](https://drive.google.com/file/d/1lEG7acRnIb4sI8Hs6Wfo6ssDOmO_hFvT/view?usp=sharing)**
 
 </div>
